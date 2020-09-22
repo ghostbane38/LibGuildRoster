@@ -234,7 +234,7 @@ end,
 &nbsp;
 
 ### `guildFilter`
-**Type:** _GLOBAL_
+**Type:** _OBJECT_
 
 **Requires:** _Object_ of guildId's
 
@@ -246,23 +246,175 @@ end,
 
 &nbsp;
 
+### `beforeList`
+**Type:** _FUNCTION_
+
+**Example:**
+```lua
+...
+beforeList = function()
+    
+    -- Do something before the column renders
+
+end,
+...
+```
+**:white_flag: this is optional**
+
+:question: This function is fired **before** the column renders its data
+
+&nbsp;
+
+### `afterList`
+**Type:** _FUNCTION_
+
+**Example:**
+```lua
+...
+afterList = function()
+    
+    -- Do something after the column renders
+
+end,
+...
+```
+**:white_flag: this is optional**
+
+:question: This function is fired **after** the column renders its data
+
+&nbsp;
+
 
 ## :triangular_flag_on_post: API Reference
 
-### LibGuildRoster Methods
+### `LibGuildRoster:AddColumn()`
+**Args:** `settingsObject` _Object_
 
-#### LibGuildRoster:AddColumn( _settings_ )
+**Example:** _See main Example up above
 
-#### LibGuildRoster:Refresh()
+**Returns:** A `Column` instance
 
-#### LibGuildRoster:SetBulkData( _guildList_, _callback_ )
+&nbsp;
 
-### Column Methods
+### `LibGuildRoster:Refresh()`
+:question: Alias for `GUILD_ROSTER_MANAGER:RefreshData()`
 
-#### Column:GetHeader()
+&nbsp;
 
-#### Column:IsDisabled( _value_ )
+### `LibGuildRoster:OnRosterReady()`
+**Args:** `callback` _Function_
 
-#### Column:SetGuildFilter( _manifest_ )
+**Example:**
+```lua
+LibGuildRoster:OnRosterReady(function()
 
-#### Column:UpdateRowData( _rowDataCallback_ )
+    -- Roster has finished rendering, do something
+
+end
+```
+:question: Handy if you have additional UI and need to anchor it to your custom column
+
+&nbsp;
+
+### `LibGuildRoster:SetBulkData()`
+**Args:** `columnList` _Object_, `callback` _Function ( SetRowData args )_
+
+**Example:**
+```lua
+
+local purchasesColumn = LibGuildRoster:AddColumn({ 
+    key = 'MyAddon_Purchases',
+    header = {
+      title = 'Purchases'
+    },
+    row = {
+        ...
+    }
+})
+
+local salesColumn = LibGuildRoster:AddColumn({ 
+    key = 'MyAddon_Sales',
+    header = {
+      title = 'Sales'
+    },
+    row = {
+        ...
+    }
+})
+
+LibGuildRoster:SetBulkData({ purchasesColumn, salesColumn }, function( guildId, data, index)
+
+    local purchases, sales = MyAddon.GetNumbers( guildId, data.displayName )
+    
+    -- Add multiple values to the data object, use your defined column keys as the object key
+    data['MyAddon_Purchases'] = purchases
+    data['MyAddon_Sales'] = sales
+    
+    -- Return the data object that was passed through
+    return data
+
+end)
+
+```
+
+:question: This is a useful approach if you have multiple columns and your logic is repeative. Going through the bulk method, your logic only fires once, rather than per column.
+
+&nbsp;
+
+### `Column:GetHeader()`
+**Example:**
+```lua
+
+local carrotColumn = LibGuildRoster:AddColumn({ 
+    key = 'MyAddon_Carrots',
+    header = {
+      title = 'Carrots'
+    },
+    row = {
+        ...
+    }
+})
+
+-- Fire when the Roster has finished rendering
+LibGuildRoster:OnRosterReady(function()
+
+    MyAddon_CarrotDropdown:SetAnchor(TOP, carrotColumn:GetHeader(), CENTER, 0, 582)
+
+end
+```
+
+&nbsp;
+
+### `Column:SetGuildFilter()`
+**Args:** _Object_ of guildId's
+
+**Example:**
+```lua
+
+-- Inside callback of your Addons settings
+carrotColumn:SetGuildFilter({ 10156, 117856, 39891 })
+
+-- carrotColumn will not only display in the guilds with the ID of 10156, 117856, 39891
+
+```
+
+:question: This gives you some flexibility in making some nice filter settings on which guild should display which column(s)
+
+&nbsp;
+
+### `Column:UpdateRowData()`
+**Args:** `callback` _Function_
+
+**Example:**
+```lua
+carrotColumn:UpdateRowData(function( guildId, data, index )
+    
+    -- do stuff
+    
+end)
+
+```
+
+:question: This method allows you to update the function for getting the data of a rowCell
+
+&nbsp;
