@@ -120,6 +120,118 @@ LibGuildRoster:AddColumn({
 
 &nbsp;
 
+### `row.data`
+**Type:** _FUNCTION_
+
+**Args:** `guildId` _Number_, `rowData` _Object_, `rowIndex` _Number_
+
+**Example:**
+```lua
+...
+data = function( guildId, data, index )
+    
+    -- Return an unformated raw value
+    return MyAddon:GetCarrotCount( guildId, data.displayName )
+
+end,
+...
+```
+**:warning: Function must return a raw value, to design the value, see** `row.format` **below**
+
+**:white_flag: this is optional - See** `LibGuildRoster:SetBulkData()` **for other approach**
+
+&nbsp;
+
+### `row.format`
+**Type:** _FUNCTION_
+
+**Args:** `rowCallValue` _String_
+
+**Example:**
+```lua
+...
+format = function( value )
+    
+    return zo_strformat("<<1>>", ZO_LocalizeDecimalNumber(tonumber(value)))..' carrots'
+
+end,
+...
+```
+**:warning: `value` will always be passed in as a _String_**
+
+**:white_flag: this is optional**
+
+&nbsp;
+
+### `row.mouseEnabled`
+**Type:** _FUNCTION_
+
+**Args:** `guildId` _Number_, `rowData` _Object_, `rowCellValue` _( Number, String )_
+
+**Example:**
+```lua
+...
+mouseEnabled = function( guildId, data, value )
+    
+    local condition = false
+    
+    if value >= 1 then
+        condition = true
+    end
+    
+    return condition
+
+end,
+...
+```
+**:warning: Function must return a true/false value**
+
+**:white_flag: this is optional**
+
+&nbsp;
+
+### `row.OnMouseEnter`
+**Type:** _FUNCTION_
+
+**Args:** `guildId` _Number_, `rowData` _Object_, `control` _Object / GUI_
+
+**Example:**
+```lua
+...
+OnMouseEnter = function( guildId, data, control )
+
+    InitializeTooltip(MyAddonTooltip)
+    MyAddonTooltip:SetDimensionConstraints(380,-1,440,-1)
+    MyAddonTooltip:ClearAnchors()
+    MyAddonTooltip:SetAnchor(BOTTOMRIGHT, control, TOPLEFT, 100, 0)
+    MyAddonTooltip_GetInfo(MyAddonTooltip, data.displayName)
+
+end,
+...
+```
+**:white_flag: this is optional**
+
+&nbsp;
+
+### `row.OnMouseExit`
+**Type:** _FUNCTION_
+
+**Args:** `guildId` _Number_, `rowData` _object_, `control` _object/GUI_
+
+**Example:**
+```lua
+...
+OnMouseExit = function( guildId, data, control )
+
+    ClearTooltip(MyAddonTooltip)
+
+end,
+...
+```
+**:white_flag: this is optional**
+
+&nbsp;
+
 
 ## :triangular_flag_on_post: API Reference
 
