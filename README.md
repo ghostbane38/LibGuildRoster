@@ -6,7 +6,7 @@ This is a Lib for the Elder Scrolls Online "Guild Roster" list. There are numero
 
 ![Example Graphic](https://i.imgur.com/oQM3brJ.jpg)
 
-Addons running through one 'channel' will introduce a level of comppadability that benefits everyone. This also brings up a few additional benefits, such as fixing the background texture of the Roster window. The Lib caculates how the texture should render, based on the relative content available for the current guild in the Scene.
+Addons running through one 'channel' will introduce a level of compatibility that benefits everyone. This also brings up a few additional benefits, such as fixing the background texture of the Roster window. The Lib calculates how the texture should render, based on the relative content available for the current guild in the Scene.
 
 ![An extreme example](https://i.imgur.com/bbFJA3g.jpg)
 
