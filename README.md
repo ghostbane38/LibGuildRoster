@@ -56,6 +56,71 @@ LibGuildRoster:AddColumn({
 })
 ```
 
+&nbsp;
+
+## :triangular_flag_on_post: Options
+
+### `key`
+**Type:** _String_
+
+**Example:** `'MyAddon_CarrotCount'`
+
+**:warning: No spaces or special characters or the sorting/filtering will not work properly and drop performance**
+
+&nbsp;
+
+### `width`
+**Type:** _Number_
+
+**Example:** `80`
+
+**Default:** `110`
+
+**:white_flag: this is optional**
+
+&nbsp;
+
+### `header.title`
+**Type:** _String_
+
+**Example:** `Carrots`
+
+&nbsp;
+
+### `header.align`
+**Type:** _GLOBAL_
+
+**Requires:** `TEXT_ALIGN_LEFT`, `TEXT_ALIGN_RIGHT`, `TEXT_ALIGN_CENTER`
+
+**Default:** `TEXT_ALIGN_LEFT`
+
+**:white_flag: this is optional**
+
+&nbsp;
+
+### `header.tooltip`
+**Type:** _STRING_
+
+**Example:** `'A total of each member\'s carrots'`
+
+**:white_flag: this is optional**
+
+:question: This is for the tooltip when hovering over a column header, a string value can be displayed
+
+&nbsp;
+
+### `row.align`
+**Type:** _GLOBAL_
+
+**Requires:** `TEXT_ALIGN_LEFT`, `TEXT_ALIGN_RIGHT`, `TEXT_ALIGN_CENTER`
+
+**Default:** `TEXT_ALIGN_LEFT`
+
+**:white_flag: this is optional**
+
+&nbsp;
+
+
 ## :triangular_flag_on_post: API Reference
 
 ### LibGuildRoster Methods
