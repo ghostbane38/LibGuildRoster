@@ -12,7 +12,49 @@ Addons running through one 'channel' will introduce a level of comppadability th
 
 An extreme example :rofl: of ITTDB, ATT, MM3 and a dummy addon, side by side through the Lib.
 
+### Benefits
+
+:heavy_check_mark: Compatibility
+
+:heavy_check_mark: Working window background
+
+:heavy_check_mark: Option to hide columns per guild
+
 &nbsp;
+
+## :triangular_flag_on_post: Example Usage
+
+```lua
+
+LibGuildRoster:AddColumn({
+    
+  key = 'MyAddon_CarrotCount',
+        
+  width = 80,
+        
+  header = {
+    title = 'Carrots'
+  },
+        
+  row = {
+
+      align = TEXT_ALIGN_RIGHT,
+
+      data = function( guildId, data, index )
+      
+        return getMembersCarrotCount(guildId, data.displayName)
+          
+      end,
+
+      format = function( value )
+      
+        return zo_strformat("<<1>>", ZO_LocalizeDecimalNumber(tonumber(value)))..' carrots'
+          
+      end
+
+  }
+})
+```
 
 ## :triangular_flag_on_post: API Reference
 
