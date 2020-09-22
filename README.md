@@ -41,8 +41,9 @@ LibGuildRoster:AddColumn({
       align = TEXT_ALIGN_RIGHT,
 
       data = function( guildId, data, index )
-      
-        return getMembersCarrotCount(guildId, data.displayName)
+        
+        -- Return an unformated raw value
+        return MyAddon:GetCarrotCount( guildId, data.displayName )
           
       end,
 
@@ -229,6 +230,19 @@ end,
 ...
 ```
 **:white_flag: this is optional**
+
+&nbsp;
+
+### `guildFilter`
+**Type:** _GLOBAL_
+
+**Requires:** _Object_ of guildId's
+
+**Example:** `{ 10156, 117856, 39891 }`
+
+**:white_flag: this is optional**
+
+:question: This allows you to set what guilds your column will display in, this can be set further with `Column:SetGuildFilter()` ( as seen below )
 
 &nbsp;
 
