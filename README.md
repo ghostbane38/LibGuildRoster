@@ -290,7 +290,7 @@ end,
 ### `LibGuildRoster:AddColumn()`
 **Args:** `settingsObject` _Object_
 
-**Example:** _See main Example up above
+**Example:** _See main Example up above_
 
 **Returns:** A `Column` instance
 
@@ -380,7 +380,7 @@ LibGuildRoster:OnRosterReady(function()
 
     MyAddon_CarrotDropdown:SetAnchor(TOP, carrotColumn:GetHeader(), CENTER, 0, 582)
 
-end
+end)
 ```
 
 &nbsp;
