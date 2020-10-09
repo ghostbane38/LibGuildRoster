@@ -59,6 +59,36 @@ LibGuildRoster:AddColumn({
 
 &nbsp;
 
+# Table of Contents
+
+* [Options](#triangular_flag_on_post-options)
+    * [key](#key)
+    * [width](#width)
+    * [header.title](#headertitle)
+    * [header.align](#headeralign)
+    * [header.tooltip](#headertooltip)
+    * [row.align](#rowalign)
+    * [row.data](#rowdata)
+    * [row.format](#rowformat)
+    * [row.mouseEnabled](#rowmouseenabled)
+    * [row.OnMouseEnter](#rowonmouseenter)
+    * [row.OnMouseExit](#rowonmouseexit)
+    * [guildFilter](#guildfilter)
+    * [beforeList](#beforelist)
+    * [afterList](#afterlist)
+    
+ * [API Reference](#triangular_flag_on_post-api-reference)
+    * [LibGuildRoster:AddColumn()](#libguildrosteraddcolumn)
+    * [LibGuildRoster:Refresh()](#libguildrosterrefresh)
+    * [LibGuildRoster:OnRosterReady()](#libguildrosteronrosterready)
+    * [LibGuildRoster:SetBulkData()](#libguildrostersetbulkdata)
+    * [Column:GetHeader()](#columngetheader)
+    * [Column:SetGuildFilter()](#columnsetguildfilter)
+    * [Column:UpdateRowData()](#columnupdaterowdata)
+    
+
+&nbsp;
+
 ## :triangular_flag_on_post: Options
 
 ### `key`
